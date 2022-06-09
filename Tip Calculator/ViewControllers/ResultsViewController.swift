@@ -15,21 +15,29 @@ class ResultsViewController: UIViewController {
     var perPerson: String?
     var splitBy: String?
     
-    var people: Int?
-    var billAmountNum: Float?
     
     @IBOutlet weak var billAmountLabel: UILabel!
     @IBOutlet weak var tipAmountLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var perPersonLabel: UILabel!
+    @IBOutlet weak var roundingError: UILabel!
+    
     
     override func viewDidLoad() {
-         super.viewDidLoad()
+        super.viewDidLoad()
 
         billAmountLabel.text = "$\(billAmount ?? "0.00")"
         tipAmountLabel.text = "$\(tipAmount ?? "0.00")"
         totalAmountLabel.text = "$\(totalAmount ?? "0.00")"
         perPersonLabel.text = "$\(perPerson ?? "0.00")"
+        
+        let billNum = Double(billAmount!)
+        let people = Double(splitBy!)
+        let personBill = Double(perPerson!)
+        
+        if (people! * personBill! < billNum!) {
+            roundingError.text = "Rounding Error.  Please Add One Cent."
+        }
     
      }
      
