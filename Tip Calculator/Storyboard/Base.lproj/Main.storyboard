@@ -71,7 +71,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 People" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxh-Gs-uKQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Person" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxh-Gs-uKQ">
                                 <rect key="frame" x="175.66666666666666" y="525.33333333333337" width="77" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Kxh-Gs-uKQ" secondAttribute="height" multiplier="77:24" id="XLr-vS-MbI"/>
@@ -114,7 +114,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="naE-lH-n9M">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="naE-lH-n9M">
                                 <rect key="frame" x="18" y="569.33333333333337" width="392" height="31"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -125,11 +125,22 @@
                                     <action selector="spliByChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="mXo-3a-QSN"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auj-pP-twc">
+                                <rect key="frame" x="46" y="169.33333333333334" width="336" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="auj-pP-twc" secondAttribute="height" multiplier="14:1" id="ddg-xV-S5R"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.14901961389999999" green="0.18039217590000001" blue="0.21568629149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="naE-lH-n9M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="4z3-yi-YJM"/>
+                            <constraint firstItem="auj-pP-twc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Tw-OX-Cna"/>
+                            <constraint firstItem="auj-pP-twc" firstAttribute="top" secondItem="D77-LQ-len" secondAttribute="bottom" constant="13.5" id="93A-Mo-cRa"/>
                             <constraint firstItem="Qqg-tX-Uqu" firstAttribute="top" secondItem="Ngw-tR-3G0" secondAttribute="bottom" constant="30" id="BQS-Qz-hO2"/>
                             <constraint firstItem="Kxh-Gs-uKQ" firstAttribute="top" secondItem="fHQ-1c-Xb0" secondAttribute="bottom" constant="20" id="BaE-tB-liF"/>
                             <constraint firstItem="Ngw-tR-3G0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="C3b-eK-5Tf"/>
@@ -158,6 +169,7 @@
                     </view>
                     <connections>
                         <outlet property="billAmountTextField" destination="3GO-vN-Ji8" id="mPT-14-gHD"/>
+                        <outlet property="currency" destination="auj-pP-twc" id="nbz-qh-ymx"/>
                         <outlet property="splitBy" destination="naE-lH-n9M" id="GlK-Ce-d1k"/>
                         <outlet property="splitByLabel" destination="Kxh-Gs-uKQ" id="hEM-c8-MGq"/>
                         <outlet property="tipPercentLabel" destination="cQt-pM-iUp" id="reR-IC-aOr"/>
@@ -167,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="17.39130434782609" y="96.428571428571431"/>
+            <point key="canvasLocation" x="16.822429906542055" y="95.896328293736502"/>
         </scene>
         <!--Results View Controller-->
         <scene sceneID="aAe-mp-8og">
@@ -262,6 +274,9 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" red="0.38823530080000002" green="0.84705877299999999" blue="0.7019608021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="recalculateButton:" destination="sFC-tQ-wU1" eventType="touchUpInside" id="B6k-Gm-sIv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gt1-He-psr"/>
@@ -289,10 +304,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="szK-sJ-HIx"/>
+                    <connections>
+                        <outlet property="billAmountLabel" destination="iro-8d-E6N" id="xSY-Z0-thp"/>
+                        <outlet property="perPersonLabel" destination="YLf-zo-Oub" id="bYx-ei-vNY"/>
+                        <outlet property="tipAmountLabel" destination="8ho-zi-bYD" id="wqc-xH-dv8"/>
+                        <outlet property="totalAmountLabel" destination="7kf-ur-kOk" id="Ge1-HB-jV2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqv-50-aVq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905.79710144927549" y="95.758928571428569"/>
+            <point key="canvasLocation" x="905.60747663551399" y="95.248380129589634"/>
         </scene>
     </scenes>
 </document>
