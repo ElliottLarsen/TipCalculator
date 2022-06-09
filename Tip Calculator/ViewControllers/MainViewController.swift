@@ -7,20 +7,25 @@
 
 import UIKit
 
+extension NSString  {
+    var isNumber: Bool {
+        return length > 0 && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted).location == NSNotFound
+    }
+}
+
 class MainViewController: UIViewController {
     
-    var billAmount: Float = 0.00
-    var tipAmount: Float = 0.00
-    var totalAmount: Float = 0.00
-    var perPerson: Float = 0.00
+    var displayBillAmount: String = "0.0"
+    var displayTipAmount: String = "0.0"
+    var displayTotalAmount: String = "0.0"
+    var displayPerPerson: String = "0.0"
 
     @IBOutlet weak var billAmountTextField: UITextField!
-    
     @IBOutlet weak var tipPercentLabel: UILabel!
     @IBOutlet weak var tipPercentage: UISlider!
-    
     @IBOutlet weak var splitByLabel: UILabel!
     @IBOutlet weak var splitBy: UISlider!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
